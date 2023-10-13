@@ -1,0 +1,43 @@
+<section>
+  <div class="container text-center main-margin main-padding">
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6" *ngFor="let item of categoriesData">
+        <div  class="card" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <img height="300px" [src]="item.image" class="card-img-top w-100" alt="image" >
+          <div class="card-body">
+            <p class="card-text fs-4 fw-bold text-main">{{item.name}}</p>
+          </div>
+        </div>
+        <div class="module">
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row d-flex align-items-center">
+                    <div class="col-md-6 col-sm-12 text-center align-center">
+                      <h2 class="fw-bold text-main mb-3">{{item.name}}</h2>
+                      <h5>{{item.name}}</h5>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <div class="image">
+                        <img [src]="item.image" class="card-img-top w-100" alt="image">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</section>

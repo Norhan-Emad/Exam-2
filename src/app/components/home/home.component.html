@@ -1,0 +1,62 @@
+<section>
+  <div class="container main-margin main-padding">
+    <div class="row g-0 d-flex justify-content-center">
+      <div class="col-md-3 mt-5">
+        <owl-carousel-o [options]="mainSlideOptions">
+          <ng-template carouselSlide><img height="400" src="./assets/images-20231007T152308Z-001/slider/41nN4nvKaAL._AC_SY200_.jpg" alt="image" ></ng-template>
+          <ng-template carouselSlide><img height="400" src="./assets/images-20231007T152308Z-001/slider/61cSNgtEISL._AC_SY200_.jpg" alt="image" ></ng-template>
+          <ng-template carouselSlide><img height="220" src="./assets/images-20231007T152308Z-001/slider/XCM_Manual_1396328_4379574_Egypt_EG_BAU_GW_DC_SL_Jewelry_379x304_1X._SY304_CB650636675_.jpg" alt="image" ></ng-template>
+        </owl-carousel-o>
+      </div>
+      <div class="col-md-3">
+        <div class="row">
+          <img src="./assets/images-20231007T152308Z-001/slider/XCM_Manual_1396328_4379575_Egypt_EG_BAU_GW_DC_SL_Bags_Wallets_379x304_1X._SY304_CB650636675_.jpg" alt="image" class="w-100">
+        </div>
+        <div class="row">
+          <img src="./assets/images-20231007T152308Z-001/slider/XCM_Manual_1533480_5305769_379x304_1X._SY304_CB616236518_.jpg" alt="image" class="w-100">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <owl-carousel-o [options]="catOptions">
+    <ng-container *ngFor="let slide of categoryData">
+      <ng-template carouselSlide>
+        <img height="300" [src]="slide.image" [alt]="slide.name" [title]="slide.name" class="w-100">
+        <h4 class="fw-bolder">{{slide.name}}</h4>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</section>
+
+<section>
+  <div class="container ">
+    <div class="input">
+      <input type="text" class="form-control m-auto my-4 p-2 w-75" placeholder="search..." [(ngModel)]="termInput">
+    </div>
+    <div class="row g-4">
+      <div *ngFor="let item of productData | search:termInput" class="col-sm-6 col-lg-3">
+        <div class="card p-3">
+          <div [routerLink]="['/details' , item._id]" routerLinkActive="router-link-active"  role="button">
+            <div class="image">
+              <img [src]="item.imageCover" alt="" class="w-100">
+            </div>
+            <h4 class="font-sm text-main">{{item.category.name}}</h4>
+            <h3 class="fs-6">{{item.title | cuttext}}</h3>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="price">{{item.price | currency :" " }} <span class="fw-bold">EGP</span></span>
+              <span class="rating"><i class="fa-solid fa-star rating-color"></i>{{item.ratingsAverage}}</span>
+            </div>
+          </div>
+          <div>
+            <i class="fa-solid fa-heart fs-3 text-end" (click)='AddToWish(item._id)' role="button"></i>
+
+              <button type="button" class="main-btn w-100 m-auto" (click)='AddToCart(item._id)'>+ Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

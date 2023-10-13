@@ -1,0 +1,32 @@
+<section>
+  <div class="container py-5 main-margin main-padding">
+    <form [formGroup]="detailsForm">
+      <div class="form-item">
+        <label for="details" class="form-label">details</label>
+        <input type="text"
+          class="form-control" name="details" id="details" formControlName="details">
+          <div class="messages alert alert-danger" *ngIf="(detailsForm.get('details')?.touched||detailsForm.get('details')?.value.length>0)&&detailsForm.get('details')?.errors">
+            <p *ngIf="detailsForm.get('details')?.getError('required')">details is required</p>
+          </div>
+      </div>
+      <div class="form-item">
+        <label for="phone" class="form-label">phone</label>
+        <input type="tel"
+          class="form-control mb-4" name="phone" id="phone" formControlName="phone">
+          <div class="messages alert alert-danger" *ngIf="(detailsForm.get('phone')?.touched||detailsForm.get('phone')?.value.length>0)&&detailsForm.get('phone')?.errors">
+            <p *ngIf="detailsForm.get('phone')?.getError('required')">phone is required</p>
+            <p *ngIf="detailsForm.get('phone')?.getError('pattern')">invalid phone number</p>
+          </div>
+      </div>
+      <div class="form-item">
+        <label for="city" class="form-label">city</label>
+        <input type="text"
+          class="form-control" name="city" id="city" formControlName="city">
+          <div class="messages alert alert-danger" *ngIf="(detailsForm.get('city')?.touched||detailsForm.get('city')?.value.length>0)&&detailsForm.get('city')?.errors">
+            <p *ngIf="detailsForm.get('city')?.getError('required')">details is required</p>
+          </div>
+      </div>
+    </form>
+    <button type="submit" class="btn btn-outline-info w-100 mt-4" [disabled]="detailsForm.invalid" (click)="handleForm()">Pay Now</button>
+  </div>
+</section>
