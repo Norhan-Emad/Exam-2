@@ -17,7 +17,11 @@
               <span class="rating"><i class="fa-solid fa-star rating-color"></i>{{item.ratingsAverage}}</span>
             </div>
           </div>
-          <button type="button" class="main-btn">+ Add To Cart</button>
+          <div>
+            <i *ngIf="!wishList.includes($any(item._id))" class="fa-solid fa-heart fs-3 text-end" (click)='AddToWish(item._id)' role="button"></i>
+            <i *ngIf="wishList.includes($any(item._id))" class="fa-solid fa-heart fs-3 text-end text-danger" (click)='AddToWish(item._id)' role="button"></i>
+              <button type="button" class="main-btn w-100 m-auto" (click)='AddToCart(item._id)'>+ Add To Cart</button>
+          </div>
         </div>
       </div>
     </div>

@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   categoryData:Category[]=[];
   termInput:string ="";
   productId:string="";
+  wishList:any[]=[];
   ngOnInit(): void {
     this._ProductsService.getProducts().subscribe({
       next:(response)=>{
@@ -39,6 +40,13 @@ export class HomeComponent implements OnInit {
         console.log(err);
       }
     });
+
+    this._WishService.getWishData().subscribe({
+      next:(response)=>{
+        const newData = response.data.map((item:any)=>item._id)
+        this.wishList =newData ;
+      }
+    })
   }
   catOptions: OwlOptions = {
     loop: true,
@@ -97,6 +105,7 @@ export class HomeComponent implements OnInit {
       next:(response)=>{
         console.log(response);
         this._ToastrService.success(response.message);
+        this.wishList =response.data;
       },
       error:(err)=>{
         console.log(err);

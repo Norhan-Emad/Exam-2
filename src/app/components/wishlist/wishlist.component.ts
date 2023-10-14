@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/cart.service';
 import { WishService } from 'src/app/services/wish.service';
 
 @Component({
@@ -7,7 +9,7 @@ import { WishService } from 'src/app/services/wish.service';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit{
-  constructor(private _wishService:WishService){}
+  constructor(private _wishService:WishService , private _CartService:CartService , private _ToastrService:ToastrService){}
   wishData:any;
   ngOnInit(): void {
     this._wishService.getWishData().subscribe({
@@ -20,7 +22,7 @@ export class WishlistComponent implements OnInit{
       }
     })
   };
-  remove(Id:string):void{
+  remove(Id:any):void{
     this._wishService.removeProduct(Id).subscribe({
       next:({data})=>{
         console.log(data);
@@ -30,8 +32,18 @@ export class WishlistComponent implements OnInit{
         console.log(err);
       }
     })
+  };
+  AddToCart(Id:string):void{
+    this._CartService.AddCart(Id).subscribe({
+      next:(response)=>{
+        console.log(response);
+        this._ToastrService.success(response.message);
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
   }
-
 
 
 }

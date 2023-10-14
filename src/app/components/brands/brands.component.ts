@@ -9,6 +9,7 @@ import { BrandService } from 'src/app/services/brand.service';
 export class BrandsComponent implements OnInit{
   constructor(private _BrandService:BrandService){}
   brandsData:any;
+  brandName:any;
   ngOnInit(): void {
       this._BrandService.getBrands().subscribe({
         next:(response)=>{

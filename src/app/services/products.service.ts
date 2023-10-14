@@ -19,4 +19,8 @@ export class ProductsService {
   getCategory():Observable<any>{
     return this._HttpClient.get("https://ecommerce.routemisr.com/api/v1/categories");
   }
+
+  CartNum(Num:number):void{
+    
+  }
 }

@@ -30,7 +30,7 @@ export class WishService {
   }
 
   removeProduct(prodID:string):Observable<any>{
-    return this._HttpClient.delete(`https://ecommerce.routemisr.com/api/v1/wishlist${prodID}`,
+    return this._HttpClient.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${prodID}`,
     {
       headers: this.mainToken
     })
