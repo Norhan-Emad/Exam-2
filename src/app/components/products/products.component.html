@@ -5,7 +5,7 @@
     </div>
     <div class="row g-4">
       <div *ngFor="let item of productData | search:termInput" class="col-sm-6 col-lg-3">
-        <div class="card p-3">
+        <div class="card p-3 border-0">
           <div [routerLink]="['/details' , item._id]"  role="button">
             <div class="image">
               <img [src]="item.imageCover" alt="image" class="w-100">
@@ -20,7 +20,7 @@
           <div>
             <i *ngIf="!wishList.includes($any(item._id))" class="fa-solid fa-heart fs-3 text-end" (click)='AddToWish(item._id)' role="button"></i>
             <i *ngIf="wishList.includes($any(item._id))" class="fa-solid fa-heart fs-3 text-end text-danger" (click)='AddToWish(item._id)' role="button"></i>
-              <button type="button" class="main-btn w-100 m-auto" (click)='AddToCart(item._id)'>+ Add To Cart</button>
+            <button type="button" class=" cartBtn main-btn w-50 m-auto mb-3" (click)='AddToCart(item._id)'>+ Add To Cart</button>
           </div>
         </div>
       </div>

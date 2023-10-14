@@ -82,5 +82,18 @@ body{
   &:hover{
     box-shadow: 0 0 10px #08e208;
     transition: 0.6s;
+    .cartBtn{
+      bottom: 0;
+      opacity: 1;
+      transition: 0.6s;
+    }
   }
+}
+
+.cartBtn{
+  position: absolute;
+  left: 50%;
+  bottom: -10%;
+  opacity: 0;
+  transform: translateX(-50%);
 }

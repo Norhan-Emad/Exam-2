@@ -47,4 +47,16 @@ constructor(private _CartService:CartService){}
       })
     }
   }
+
+  clear():void{
+    this._CartService.clearCart().subscribe({
+      next:({data})=>{
+        console.log(data);
+        this.cartData = data;
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+  }
 }

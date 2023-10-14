@@ -53,7 +53,7 @@
           <div>
             <i *ngIf="!wishList.includes($any(item._id))" class="fa-solid fa-heart fs-3 text-end" (click)='AddToWish(item._id)' role="button"></i>
             <i *ngIf="wishList.includes($any(item._id))" class="fa-solid fa-heart fs-3 text-end text-danger" (click)='AddToWish(item._id)' role="button"></i>
-              <button type="button" class="main-btn w-100 m-auto" (click)='AddToCart(item._id)'>+ Add To Cart</button>
+              <button type="button" class=" cartBtn main-btn w-50 m-auto mb-3" (click)='AddToCart(item._id)'>+ Add To Cart</button>
           </div>
         </div>
       </div>

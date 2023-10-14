@@ -18,9 +18,7 @@ export class CartService {
     {
     productId: prodId
   },
-  {
-    headers: this.mainToken
-  })
+  )
   }
 
   getCartData():Observable<any>{
@@ -47,13 +45,16 @@ export class CartService {
     })
   }
 
+  clearCart():Observable<any>{
+    return this._HttpClient.delete(`https://ecommerce.routemisr.com/api/v1/cart` ,
+  )
+  }
+
   paymentMethod(cartId:string , detailsObject:any):Observable<any>{
     return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200` ,
     {
       shippingAddress:detailsObject
   },
-  {
-    headers: this.mainToken
-  })
+  )
   }
 }

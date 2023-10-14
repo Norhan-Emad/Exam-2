@@ -18,7 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { CuttextPipe } from './cuttext.pipe';
 import { DetailsComponent } from './components/details/details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +29,8 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { SearchPipe } from './components/search.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { MyHttpInterceptor } from './interceptor/my-http.interceptor';
+import { LoadingInterceptor } from './interceptor/loading.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +65,10 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     NgxSpinnerModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide : HTTP_INTERCEPTORS , useClass :MyHttpInterceptor , multi:true},
+    {provide : HTTP_INTERCEPTORS , useClass :LoadingInterceptor , multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
