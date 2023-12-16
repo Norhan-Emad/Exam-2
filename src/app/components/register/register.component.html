@@ -2,7 +2,7 @@
   <div class="container ">
     <form [formGroup]="registerForm" (ngSubmit)="handleForm()">
       <div class="form-item">
-        <label for="name" class="form-label">Name</label>
+        <label for="name" class="form-label mt-5">Name</label>
         <input type="text"
           class="form-control" name="name" id="name" formControlName="name">
         <div class="messages alert alert-danger" *ngIf="(registerForm.get('name')?.touched||registerForm.get('name')?.value.length>0)&&registerForm.get('name')?.errors">
